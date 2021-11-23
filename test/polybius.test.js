@@ -75,8 +75,8 @@ describe("polybius()", () => {
             expect(actual).to.be.false;
         })
         it("should keep spaces as is", () => {
-            const input = "31434313 414322";
-            const expected = "cool dog";
+            const input = "31434313 214345";
+            const expected = "cool boy";
             const actual = polybius(input, false);
             expect(actual).to.equal(expected);
         })
