@@ -5,12 +5,18 @@
 
 const caesarModule = (function () {
   function caesar(input, shift, encode = true) {
+    //error handling
     if (!input || typeof(input) !== "string" || !shift || typeof(shift) !== "number" || shift === 0 || shift > 25 || shift < -25 || typeof(encode) !== "boolean") return false;
     let result = "";
+    //iterate through string
     for (let i = 0; i < input.length; i++){
+      //assign symbol to ascii code
       let charCode = input.toLowerCase().charCodeAt(i);
+      //check if ascii code is letter
       if (charCode > 96 && charCode < 123){
+        //check if encoding or decoding and shift ascii code
         encode ? charCode += shift : charCode -= shift;
+        //wrap around letters
         if (charCode > 122){
           charCode = 96 + (charCode - 122);
         } else if (charCode < 97){
@@ -19,6 +25,7 @@ const caesarModule = (function () {
       }
       result += String.fromCharCode(charCode);
     }
+    //add symbol to result
     return result;
   }
 

@@ -5,15 +5,19 @@
 
 const substitutionModule = (function () {
   function substitution(input, alphabet, encode = true) {
+    //error handling
     if (!input || typeof(input) !== "string" || !alphabet || alphabet.length !== 26 ||  (new Set(alphabet).size !== alphabet.length || typeof(encode) !== "boolean")) return false;
     let result = "";
     const original = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    //transform alphabet string to array
     const alphabetArr = alphabet.split("");
+    //iteerate through input string
     for (let i = 0; i < input.length; i++){
       if (input[i] === " ") {
         result += " ";
       } else {
         const symbol = input[i].toLowerCase();
+        //check if encoding or decoding and add to result
         encode ? result += `${alphabetArr[original.indexOf(symbol)]}` : result += `${original[alphabetArr.indexOf(symbol)]}`;
       }
     }
